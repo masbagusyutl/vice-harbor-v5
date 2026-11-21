@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Harbor</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0c0e18; font-family: Arial, Helvetica, sans-serif; }
+  #game { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+  #status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .hidden { display: none !important; }
+  #hud { position: fixed; inset: 0; pointer-events: none; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.9); }
+  #topbar { position: absolute; top: 12px; left: 14px; font-size: 20px; font-weight: bold; letter-spacing: 0.5px; }
+  #topbar .sub { font-size: 13px; font-weight: normal; opacity: 0.9; }
+  #stars { position: absolute; top: 12px; right: 210px; font-size: 26px; color: #ffd94d; letter-spacing: 3px; }
+  #stars.hot { color: #ff5e5e; }
+  #minimap { position: absolute; top: 12px; right: 14px; border: 2px solid rgba(255,255,255,0.55); border-radius: 4px; background: rgba(12,14,20,0.85); }
+  #objective { position: absolute; left: 14px; bottom: 64px; font-size: 16px; line-height: 1.45; max-width: 460px; background: rgba(10,12,20,0.55); padding: 8px 12px; border-radius: 6px; border-left: 4px solid #19d3e6; }
+  #dialogue { position: absolute; left: 50%; transform: translateX(-50%); bottom: 14px; font-size: 16px; font-style: italic; max-width: 720px; text-align: center; background: rgba(10,12,20,0.65); padding: 8px 16px; border-radius: 6px; }
+  #standings { position: absolute; right: 14px; top: 210px; font-size: 17px; line-height: 1.5; background: rgba(10,12,20,0.6); padding: 10px 14px; border-radius: 6px; border-right: 4px solid #ffd94d; text-align: right; }
+  #toast { position: absolute; left: 50%; top: 34%; transform: translateX(-50%); font-size: 30px; font-weight: bold; color: #ffd94d; letter-spacing: 1px; }
+  .overlay { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center; background: radial-gradient(ellipse at center, rgba(10,8,18,0.25) 0%, rgba(10,8,18,0.72) 100%); text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
+  .overlay h1 { font-size: 84px; margin: 0; letter-spacing: 6px; color: #ffd94d; }
+  .overlay h1 .vice { color: #19d3e6; }
+  .overlay h2 { font-size: 40px; margin: 0 0 10px; letter-spacing: 4px; }
+  .overlay p { font-size: 17px; line-height: 1.6; max-width: 640px; margin: 8px 0; }
+  .overlay .keys { font-size: 14px; opacity: 0.9; }
+  .overlay .start { font-size: 20px; font-weight: bold; color: #19d3e6; margin-top: 18px; }
+</style>
+</head>
+<body>
+<canvas id="game" aria-label="Vice Harbor: an open-world harbor-city crime game. Drive, steal cars, work jobs, outrun the police."></canvas>
+<p id="status" role="status" aria-live="polite"></p>
+<div id="hud" class="hidden">
+  <div id="topbar"><span id="cash">$150</span> · <span id="rank">Rookie</span><br><span class="sub"><span id="time">17:30</span> · <span id="complete">0% COMPLETE</span></span></div>
+  <div id="stars">☆☆☆☆☆</div>
+  <canvas id="minimap" width="180" height="180"></canvas>
+  <div id="objective"></div>
+  <div id="dialogue" class="hidden"></div>
+  <div id="standings" class="hidden"></div>
+  <div id="toast" class="hidden"></div>
+</div>
+<div id="title" class="overlay">
+  <h1><span class="vice">VICE</span> HARBOR</h1>
+  <p>Marco Solano came back to the harbor city with $150 and a stolen smile.
+  Seven jobs stand between him and the ferry out — if the crew, the cops
+  and the rivals let him live that long.</p>
+  <p class="keys">WASD / arrows — walk &amp; drive · E — enter / exit car &amp; boat · F — start job / use shop<br>
+  Space / click — shoot · 1 / 2 — answer a choice · P — pause · M — mute</p>
+  <p id="continue-line" class="start">Press Enter or click to start.</p>
+</div>
+<div id="pause" class="overlay hidden">
+  <h2>PAUSED</h2>
+  <p id="pause-stats"></p>
+  <p class="start">Press P or Enter to keep playing.</p>
+</div>
+<div id="over" class="overlay hidden">
+  <h2 id="over-title">BUSTED</h2>
+  <p id="over-text"></p>
+  <p class="start">Press Enter to keep playing.</p>
+</div>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.min.js" } }
+</script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
