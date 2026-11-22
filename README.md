@@ -1,8 +1,8 @@
 # VICE HARBOR
 
-[![make.fun](https://make.fun/badge/competition/gta6-01)](https://make.fun/c/gta6-01)
-[![make.fun](https://make.fun/badge/entry/vice-harbor-v5)](https://make.fun/c/gta6-01)
-[![make.fun](https://make.fun/badge/live/vice-harbor-v5)](https://make.fun/c/gta6-01)
+[![make.fun · gta6-01](https://make.fun/badge/gta6-01.svg)](https://make.fun/bounty/gta6-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-01)
+[![rank](https://make.fun/badge/gta6-01/masbagusyutl/vice-harbor-v5/rank.svg)](https://make.fun/bounty/gta6-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-01)
+[![reward](https://make.fun/badge/gta6-01/masbagusyutl/vice-harbor-v5/reward.svg)](https://make.fun/bounty/gta6-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-01)
 
 An original 3D open-world harbor-city crime game, built for the make.fun
 **gta6-01 — Make GTA 6** competition. No Rockstar assets, no copied art or
